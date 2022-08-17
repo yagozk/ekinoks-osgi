@@ -1,0 +1,63 @@
+package org.yagozk.inverter.command;
+
+import org.apache.felix.service.command.CommandProcessor;
+import org.yagozk.inverter.StringInverter;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.yagozk.basicmaths.api.*;
+import java.util.*;
+
+@Component(
+	    property= {
+	        CommandProcessor.COMMAND_SCOPE + ":String=yagozk",
+	        CommandProcessor.COMMAND_FUNCTION + ":String=invert",
+	        CommandProcessor.COMMAND_FUNCTION + ":String=invertAlt",
+	        CommandProcessor.COMMAND_FUNCTION + ":String=mathTest"
+
+	    },
+	    service=StringInverterCommand.class
+	)
+	public class StringInverterCommand {
+
+	    private StringInverter inverter;
+	    private BasicMaths basicMaths;
+	    private Scanner scan = new Scanner(System.in);
+	    	
+	    @Reference
+	    void bindStringInverter(StringInverter inverter) {
+	        this.inverter = inverter;
+	    }
+	   	    
+	    @Reference
+	    void bindBasicMaths(BasicMaths basicMaths) {
+	        this.basicMaths = basicMaths;
+	    }
+
+	    public void invert(String input) {
+	        System.out.println(inverter.invert(input));
+	    }
+	    
+	    public void mathTest() {
+	    	System.out.println( "Enter two integers:");
+	    	
+	    	int num1, num2;
+	    	num1 = scan.nextInt();
+	    	num2 = scan.nextInt();
+	    	
+	    	System.out.println( basicMaths.add(num1, num2));
+	    	System.out.println( basicMaths.sub(num1, num2));
+	    	System.out.println( basicMaths.mul(num1, num2));
+	    	System.out.println( basicMaths.div(num1, num2));
+	    	
+	    	System.out.println( inverter.invert("I HOPE THIS WORKS!"));
+
+	    }
+	    
+	    public void invertAlt() {
+	    	System.out.println( "Enter the input to be reversed: ");
+	    	String userInput = scan.nextLine();
+	    	System.out.println( inverter.invert(userInput));
+	    	System.out.println( "Done.");
+	    }
+
+	}

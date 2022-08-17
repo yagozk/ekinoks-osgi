@@ -1,0 +1,141 @@
+package cs.yagozk.userinterface;
+
+import cs.yagozk.calculator.Calculator;
+import org.apache.felix.service.command.CommandProcessor;
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import java.util.*;
+import java.math.BigInteger;
+import java.awt.event.*;
+
+@Component(
+	    property= {
+	        CommandProcessor.COMMAND_SCOPE + ":String=yagozk",
+	        CommandProcessor.COMMAND_FUNCTION + ":String=run"
+	    },
+	    service=UserInterface.class
+	)
+
+public class UserInterface implements ActionListener{
+	
+	private Calculator calculator;
+	Scanner scan = new Scanner( System.in);
+	YagizFrame testFrame = new YagizFrame();
+
+	
+	@Reference
+	void bindCalculator( Calculator calculator) {
+		this.calculator = calculator;
+	}
+	
+	public void run() {
+		testFrame.setVisible( true);
+		testFrame.setAllActions( this);
+	}
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String inputLang1 = null;
+		String inputLang2 = null;
+		String strNumber1 = testFrame.getNumberOne();
+		String strNumber2 = testFrame.getNumberTwo();
+		BigInteger bigInt1 = null;
+		BigInteger bigInt2 = null;
+		
+		if ( strNumber1 != null && strNumber2 != null ) {
+			inputLang1 = detectInputLanguage( strNumber1);
+			inputLang2 = detectInputLanguage( strNumber2);
+		}
+		
+		if ( inputLang1 == "tr" )
+			bigInt1 = calculator.translateFromTr( strNumber1);
+		else if ( inputLang1 == "eng" )
+			bigInt1 = calculator.translateFromEng( strNumber1);
+		else {
+			testFrame.setResultField( "Error: Invalid input");
+			return;
+		}
+		
+		if ( inputLang2 == "tr" )
+			bigInt2 = calculator.translateFromTr( strNumber2);
+		else if ( inputLang2 == "eng" )
+			bigInt2 = calculator.translateFromEng( strNumber2);
+		else {
+			testFrame.setResultField( "Error: Invalid input");
+			return;
+		}
+		
+		// ADD
+		if ( e.getSource() == testFrame.getAddButton() ) {
+			if ( bigInt1 != null && bigInt2 != null ) {
+				if ( inputLang1 == "eng")
+					testFrame.setResultField( calculator.translateToEng( calculator.add(bigInt1, bigInt2)));
+				else if ( inputLang1 == "tr")
+					testFrame.setResultField( calculator.translateToTr( calculator.add(bigInt1, bigInt2)));
+			}
+		}
+		// SUBSTRACT
+		else if ( e.getSource() == testFrame.getSubstractButton() ) {
+			if ( bigInt1 != null && bigInt2 != null ) {
+				BigInteger res = calculator.sub( bigInt1, bigInt2);
+				if ( inputLang1 == "eng") {
+					if ( res.compareTo(BigInteger.ZERO) < 0 ) {
+						testFrame.setResultField( "minus " + calculator.translateToEng(res.abs()));
+					}
+					else {
+						testFrame.setResultField( calculator.translateToEng( res));
+					}
+				}
+				else if ( inputLang1 == "tr") {
+					if ( res.compareTo(BigInteger.ZERO) < 0 ) {
+						testFrame.setResultField( "eksi " + calculator.translateToTr(res.abs()));
+					}
+					else {
+						testFrame.setResultField( calculator.translateToTr( res));
+					}
+
+				}
+			}
+		}
+		// MULTIPLY
+		else if ( e.getSource() == testFrame.getMultiplyButton() ) {
+			if ( bigInt1 != null && bigInt2 != null ) {
+				if ( inputLang1 == "eng")
+					testFrame.setResultField( calculator.translateToEng( calculator.mul(bigInt1, bigInt2)));
+				else if ( inputLang1 == "tr")
+					testFrame.setResultField( calculator.translateToTr( calculator.mul(bigInt1, bigInt2)));
+
+			}
+		}
+		// DIVIDE
+		else if ( e.getSource() == testFrame.getDivideButton() ) {
+			if ( bigInt1 != null && bigInt2 != null ) {
+				if ( calculator.div(bigInt1, bigInt2) == null ) {
+					testFrame.setResultField( "Error: Cannot divide to zero / Hata: Sıfıra bölünemez");
+					return;
+				}
+				if ( inputLang1 == "eng" )
+					testFrame.setResultField( calculator.translateToEng( calculator.div(bigInt1, bigInt2)));
+				else if ( inputLang1 == "tr" )
+					testFrame.setResultField( calculator.translateToTr( calculator.div(bigInt1, bigInt2)));
+			}
+		}
+		
+	}
+	
+	private String detectInputLanguage( String input) {
+		if ( calculator.translateFromEng(input) != null ) {
+			return "eng";
+		}
+		else if ( calculator.translateFromTr(input) != null ) {
+			return "tr";
+		}
+		else {
+			return null;
+		}
+	}
+	
+}

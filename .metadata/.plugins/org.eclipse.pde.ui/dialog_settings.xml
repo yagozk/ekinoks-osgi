@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="osgiProject" value="false"/>
+	<item key="generatePluginActivator" value="false"/>
+	<item key="uiPlugin" value="true"/>
+	<item key="apiAnalysis" value="false"/>
+	<item key="rcpPlugin" value="false"/>
+	<section name="quick_assist_proposal_size">
+	</section>
+	<section name="PDEFormActionManager">
+	</section>
+	<section name="pluginsView">
+	</section>
+	<section name="org.eclipse.pde.ui.PLUGIN_STATUS_DIALOG">
+		<item key="DIALOG_WIDTH" value="976"/>
+		<item key="DIALOG_HEIGHT" value="413"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="pde_compiler_errorwarnings_block">
+		<item key="0" value="true"/>
+		<item key="1" value="false"/>
+		<item key="2" value="false"/>
+		<item key="3" value="false"/>
+		<item key="4" value="false"/>
+	</section>
+	<section name="targetStateView">
+	</section>
+	<section name="PluginExportWizard">
+		<item key="exportType" value="1"/>
+		<item key="destination0" value="C:\Users\yago\eclipse-workspace\export"/>
+		<item key="destination1" value="C:\Users\yago\eclipse-workspace\export"/>
+		<item key="exportUpdate" value="true"/>
+		<item key="exportSource" value="false"/>
+		<item key="exportSourceFormat" value="Generate source bundles"/>
+		<item key="saveAsAnt" value="false"/>
+		<item key="qualifier" value="true"/>
+		<item key="qualifierName" value="202208111408"/>
+		<item key="allowBinaryCycles" value="true"/>
+		<item key="useWorkspaceCompiledClasses" value="false"/>
+		<item key="signJAR" value="false"/>
+	</section>
+	<section name="editBundleContainerWizard">
+		<item key="location1" value="C:\Users\yago\Desktop\target"/>
+		<item key="location2" value="C:\Users\yago\Desktop\eclipse"/>
+	</section>
+</section>

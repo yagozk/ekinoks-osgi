@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.yagozk.inverter.StringInverter"/>
+    <fullyQualifiedTypeName name="org.osgi.service.component.annotations.Component"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="cs.yagozk.calculator.Calculator"/>
+    <fullyQualifiedTypeName name="java.math.BigInteger"/>
+    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+    <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
+    <fullyQualifiedTypeName name="cs.yagozk.userinterface.UserInterface"/>
+    <fullyQualifiedTypeName name="org.osgi.framework.ServiceReference"/>
+</qualifiedTypeNameHistroy>

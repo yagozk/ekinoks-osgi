@@ -1,0 +1,2 @@
+Service-Component: OSGI-INF/cs.yagozk.userinterface.UserInterface.xml
+Bundle-ActivationPolicy: lazy

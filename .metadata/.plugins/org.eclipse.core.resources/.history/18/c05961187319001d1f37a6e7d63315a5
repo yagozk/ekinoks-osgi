@@ -1,0 +1,11 @@
+package cs.yagozk.userinterface;
+
+import javax.swing.JFrame;
+
+public class YagizFrame extends JFrame {
+
+	public YagizFrame() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Userinterface
+Bundle-SymbolicName: cs.yagozk.userinterface
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: cs.yagozk.userinterface
+Import-Package: cs.yagozk.calculator,
+ org.apache.felix.service.command;version="[1.0.0,2.0.0)",
+ org.osgi.framework;version="1.10.0";resolution:=optional,
+ org.osgi.service.component.annotations;version="[1.2.0,2.0.0)";resolution:=optional
+Bundle-ActivationPolicy: lazy
+Service-Component: OSGI-INF/cs.yagozk.userinterface.UserInterface.xml

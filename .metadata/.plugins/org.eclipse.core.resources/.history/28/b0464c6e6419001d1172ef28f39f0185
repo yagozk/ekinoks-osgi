@@ -1,0 +1,42 @@
+package cs.yagozk.userinterface;
+
+import cs.yagozk.calculator.Calculator;
+import org.apache.felix.service.command.CommandProcessor;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import java.util.*;
+import java.math.BigInteger;
+
+@Component(
+	    property= {
+	        CommandProcessor.COMMAND_SCOPE + ":String=yagozk",
+	        CommandProcessor.COMMAND_FUNCTION + ":String=run"
+	    },
+	    service=UserInterface.class
+	)
+
+public class UserInterface{
+	
+	private Calculator calculator;
+	Scanner scan = new Scanner(System.in);
+	
+	@Reference
+	void bindCalculator( Calculator calculator) {
+		this.calculator = calculator;
+	}
+	
+	public void run() {
+		System.out.println( "Number 1: ");
+		String str1 = scan.nextLine();
+		BigInteger num1 = calculator.translateFromTr(str1);
+		System.out.println( "Number 2: ");
+		String str2 = scan.nextLine();
+		BigInteger num2 = calculator.translateFromTr(str2);
+		System.out.println( num1);
+		System.out.println( num2);
+		System.out.println( num1 + " + " + num2  + " = " + calculator.add(num1, num2));
+		System.out.println( num1 + " - " + num2  + " = " + calculator.sub(num1, num2));
+
+	}
+	
+}

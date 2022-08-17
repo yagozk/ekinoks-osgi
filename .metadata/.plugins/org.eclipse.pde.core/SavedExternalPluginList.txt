@@ -1,0 +1,12 @@
+# List of external plug-in models previously loaded. Timestamp: 1660728446075
+file:/C:/Users/yago/Desktop/target/org.apache.felix.gogo.command_1.1.2.v20210111-1007.jar
+file:/C:/Users/yago/Desktop/target/org.apache.felix.gogo.runtime_1.1.4.v20210111-1007.jar
+file:/C:/Users/yago/Desktop/target/org.apache.felix.gogo.shell_1.1.4.v20210111-1007.jar
+file:/C:/Users/yago/Desktop/target/org.apache.felix.scr_2.1.24.v20200924-1939.jar
+file:/C:/Users/yago/Desktop/target/org.eclipse.equinox.console_1.4.500.v20211021-1418.jar
+file:/C:/Users/yago/Desktop/target/org.eclipse.equinox.ds-1.6.200.jar
+file:/C:/Users/yago/Desktop/target/org.eclipse.equinox.util_1.0.500.v20130404-1337.jar
+file:/C:/Users/yago/Desktop/target/org.eclipse.osgi.services_3.10.200.v20210723-0643.jar
+file:/C:/Users/yago/Desktop/target/org.eclipse.osgi.util_3.6.100.v20210723-1119.jar
+file:/C:/Users/yago/Desktop/target/org.eclipse.osgi_3.17.200.v20220215-2237.jar
+file:/C:/Users/yago/Desktop/target/org.osgi.service.component-1.5.0.jar
