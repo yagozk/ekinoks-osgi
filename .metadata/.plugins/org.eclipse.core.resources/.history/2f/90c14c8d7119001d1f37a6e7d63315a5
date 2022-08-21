@@ -1,9 +1,0 @@
-package cs.yagozk.userinterface;
-
-public class YagizFrame {
-
-	public YagizFrame() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

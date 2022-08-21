@@ -26,27 +26,29 @@ public class YagizFrame extends JFrame {
 	private JButton btnSubstract;
 	private JButton btnMultiply;
 	private JButton btnDivide;
-	private Locale locale;
+	//private Locale locale;
+	private String language;
 	
 	public YagizFrame() {
-		//Locale.setDefault( Locale.ENGLISH);
-		locale = Locale.getDefault();
+		language = System.getProperty("user.language");
+		//locale = Locale.getDefault();
+		System.out.println("System language is: " +  language);
+
 		setResizable(false);
 		getContentPane().setBackground(SystemColor.menu);
 		getContentPane().setLayout(null);
-		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(700,300);
 		
 		JLabel lblNewLabel = new JLabel("Sayı 1:");
-		if ( locale.equals( Locale.ENGLISH) )
+		if ( language.equalsIgnoreCase("en") )
 			lblNewLabel.setText( "Number 1:");
 		lblNewLabel.setFont(new Font("Calibri Light", Font.BOLD, 18));
 		lblNewLabel.setBounds(10, 10, 110, 64);
 		getContentPane().add(lblNewLabel);
 		
 		JLabel lblNumber = new JLabel("Sayı 2:");
-		if ( locale.equals( Locale.ENGLISH) )
+		if ( language.equalsIgnoreCase("en") )
 			lblNumber.setText( "Number 2:");
 		lblNumber.setFont(new Font("Calibri Light", Font.BOLD, 18));
 		lblNumber.setBounds(10, 60, 110, 64);
@@ -63,7 +65,7 @@ public class YagizFrame extends JFrame {
 		number1Field.setColumns(10);
 		
 		JLabel lblResult = new JLabel("Sonuç:");
-		if ( locale.equals( Locale.ENGLISH) )
+		if ( language.equalsIgnoreCase("en") )
 			lblResult.setText( "Result:");
 		lblResult.setFont(new Font("Calibri Light", Font.BOLD, 18));
 		lblResult.setBounds(10, 116, 110, 64);
@@ -75,7 +77,7 @@ public class YagizFrame extends JFrame {
 		getContentPane().add(resultField);
 		
 		btnAdd = new JButton("Topla");
-		if ( locale.equals( Locale.ENGLISH) )
+		if ( language.equalsIgnoreCase("en") )
 			btnAdd.setText( "Add");
 		btnAdd.setFont(new Font("Calibri Light", Font.BOLD, 20));
 		btnAdd.setForeground(Color.BLACK);
@@ -84,7 +86,7 @@ public class YagizFrame extends JFrame {
 		getContentPane().add(btnAdd);
 		
 		btnSubstract = new JButton("Çıkar");
-		if ( locale.equals( Locale.ENGLISH ) )
+		if ( language.equalsIgnoreCase("en") )
 			btnSubstract.setText( "Sub");
 		btnSubstract.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -95,7 +97,7 @@ public class YagizFrame extends JFrame {
 		getContentPane().add(btnSubstract);
 		
 		btnMultiply = new JButton("Çarp");
-		if ( locale.equals( Locale.ENGLISH) )
+		if ( language.equalsIgnoreCase("en") )
 			btnMultiply.setText( "Multiply");
 		btnMultiply.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -106,7 +108,7 @@ public class YagizFrame extends JFrame {
 		getContentPane().add(btnMultiply);
 		
 		btnDivide = new JButton("Böl");
-		if ( locale.equals( Locale.ENGLISH) )
+		if ( language.equalsIgnoreCase("en") )
 			btnDivide.setText( "Divide");
 		btnDivide.setFont(new Font("Calibri Light", Font.BOLD, 20));
 		btnDivide.setBounds(557, 189, 100, 44);

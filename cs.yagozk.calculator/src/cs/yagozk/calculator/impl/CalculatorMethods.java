@@ -15,7 +15,7 @@ public class CalculatorMethods implements Calculator {
     	    "sekiz","dokuz","on","yirmi",
     	    "otuz","kırk","elli","altmış","yetmiş","seksen","doksan",
     	    "yüz","bin","milyon","milyar","trilyon", "katrilyon", "kentilyon",
-    	    "sekstilyon", "septilyon", "oktilyon", "nonilyon" , "desilyon"
+    	    "sekstilyon", "septilyon", "oktilyon", "nonilyon" , "desilyon", "eksi"
     	    );
     List<String> engWordList = Arrays.asList
     	    (
@@ -24,7 +24,7 @@ public class CalculatorMethods implements Calculator {
     	    "fifteen","sixteen","seventeen","eighteen","nineteen","twenty",
     	    "thirty","forty","fifty","sixty","seventy","eighty","ninety",
     	    "hundred","thousand","million","billion","trillion", "quadrillion", "quintillion",
-    	    "sextillion", "septillion", "octillion", "nonillion" , "decillion"
+    	    "sextillion", "septillion", "octillion", "nonillion" , "decillion", "minus"
     	    );
 
 	
@@ -57,6 +57,7 @@ public class CalculatorMethods implements Calculator {
 	    BigInteger tempResult = BigInteger.ZERO;
 	    BigInteger finalResult = BigInteger.ZERO;
 	    boolean inputValid = true;
+	    boolean resultNegative = false;
 	    
 	    if ( trInput != null && trInput.length() > 0 ) {
 	    	// Replace "and" and "-" for a whitespace
@@ -65,18 +66,32 @@ public class CalculatorMethods implements Calculator {
 	    	//Split the input into an array, separated by whitespace
 	    	String[] splittedArr = trInput.trim().split("\\s+");
 	    	
+	    	if ( splittedArr[0].equalsIgnoreCase("eksi") )
+	    		resultNegative = true;
+
+	    	
 	    	// Check if the input has any invalid words
-	    	for ( String s : splittedArr ) {
+	    	for ( int i = 0; i < splittedArr.length; i++ ) {
+	    		String s = splittedArr[i];
 	    		if ( !trWordList.contains(s) ) {
 	    			inputValid = false;
 	    			return null;
 	    		}
+	    		if ( s.equals("eksi") && i != 0 ) {
+	    			inputValid = false;
+	    			return null;
+	    		}
+
 	    	}
 	    	
 	    	// if the input is valid, iterate through the input and form the final result as a BigInt
 	    	if ( inputValid ) {
 	    		for ( int i = 0; i < splittedArr.length; i++ ) {
 	    			String str = splittedArr[i];
+	    			
+	    			if ( str.equals("eksi")) {
+	    				continue;
+	    			}
 	    			
 	    			// Handling error cases for numbers smaller than 10
 	    			if ( trWordList.indexOf( str) < 10 ) {
@@ -224,7 +239,8 @@ public class CalculatorMethods implements Calculator {
 	    	
 	    }
 	    
-
+	    if ( resultNegative)
+	    	return finalResult.negate();
 		return finalResult;
 	}
 
@@ -233,17 +249,27 @@ public class CalculatorMethods implements Calculator {
 	    BigInteger tempResult = BigInteger.ZERO;
 	    BigInteger finalResult = BigInteger.ZERO;
 	    boolean inputValid = true;
+	    boolean resultNegative = false;
 	    
 	    if ( engInput != null && engInput.length() > 0 ) {
 	    	// Replace "and" and "-" for a whitespace
 	        engInput = engInput.replaceAll("-", " ");
 	    	engInput = engInput.toLowerCase().replaceAll( " and", " ");
+	    		    	
 	    	//Split the input into an array, separated by whitespace
 	    	String[] splittedArr = engInput.trim().split("\\s+");
 	    	
+	    	if ( splittedArr[0].equalsIgnoreCase("minus") )
+	    		resultNegative = true;
+	    	
 	    	// Check if the input has any invalid words
-	    	for ( String s : splittedArr ) {
+	    	for ( int i = 0; i < splittedArr.length; i++ ) {
+	    		String s = splittedArr[i];
 	    		if ( !engWordList.contains(s) ) {
+	    			inputValid = false;
+	    			return null;
+	    		}
+	    		if ( s.equals("minus") && i != 0 ) {
 	    			inputValid = false;
 	    			return null;
 	    		}
@@ -253,6 +279,9 @@ public class CalculatorMethods implements Calculator {
 	    	if ( inputValid ) {
 	    		for ( int i = 0; i < splittedArr.length; i++ ) {
 	    			String str = splittedArr[i];
+	    			
+	    			if ( str.equals( "minus"))
+	    				continue;
 	    			
 	    			// Handling error cases for numbers smaller than 20
 	    			if ( engWordList.indexOf( str) < 20 ) {
@@ -406,7 +435,8 @@ public class CalculatorMethods implements Calculator {
 	    	
 	    }
 	    
-
+	    if ( resultNegative)
+	    	return finalResult.negate();
 		return finalResult;
 	}
 
@@ -659,7 +689,7 @@ public class CalculatorMethods implements Calculator {
 
 
 
-		return result;
+		return result.replaceAll( "  ", " ");
 	}
 	
 	/*
