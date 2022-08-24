@@ -756,7 +756,7 @@ public class CalculatorMethods implements Calculator {
 	
 	private String replaceHelper( String result) {
 		result = result.replaceAll( "yüz bir", "token1");
-		result = result.replaceAll( " on bir", "token2");
+		result = result.replaceAll( "on bir", "token2");
 		result = result.replaceAll( "yirmi bir", "token3");
 		result = result.replaceAll( "otuz bir", "token4");
 		result = result.replaceAll( "kırk bir", "token5");
@@ -768,9 +768,9 @@ public class CalculatorMethods implements Calculator {
 
 		result = result.replaceAll( "bir bin", "bin");
 		result = result.replaceAll( "bir yüz", "yüz");
-		result = result.replaceAll( "bir on", "on");
+		result = result.replaceAll( "bir on", "OSMAN");
 		
-		result = result.replaceAll( "token2", " on bir");
+		result = result.replaceAll( "token2", "on bir");
 		result = result.replaceAll( "token1", "yüz bir");
 		result = result.replaceAll( "token3" , "yirmi bir");
 		result = result.replaceAll( "token4" , "otuz bir");
