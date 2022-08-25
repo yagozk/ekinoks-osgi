@@ -101,12 +101,13 @@ public class CalculatorMethods implements Calculator {
 	    			}
 	    			// Handling error cases for numbers between 10-100
 	    			if ( trWordList.indexOf( str) >= 10 && trWordList.indexOf( str) < 19 ) {
-	    				if ( i + 1 < splittedArr.length && trWordList.indexOf( splittedArr[i+1]) <= 19 &&
-	    					trWordList.indexOf( splittedArr[i+1]) >= 10 ) {
+	    				if ( (i + 1 < splittedArr.length && trWordList.indexOf( splittedArr[i+1]) <= 19 &&
+	    					trWordList.indexOf( splittedArr[i+1]) >= 10) || (i + 2 < splittedArr.length && trWordList.indexOf( splittedArr[i+2]) == 19) ) {
 	    					return null;
 	    				}
 	    			}
-	    			if ( trWordList.indexOf( str) == 19 && i + 1 < splittedArr.length && trWordList.indexOf( splittedArr[i+1]) == 19 )
+	    			if ( (trWordList.indexOf( str) == 19 && i + 1 < splittedArr.length && trWordList.indexOf( splittedArr[i+1]) == 19) ||
+	    					(trWordList.indexOf( str) == 19 && i + 2 < splittedArr.length && trWordList.indexOf( splittedArr[i+2]) == 19 ))
 	    				return null;
 	    			
 	    			// Handling error cases for numbers larger than 100
@@ -291,11 +292,17 @@ public class CalculatorMethods implements Calculator {
 	    			}
 	    			// Handling error cases for numbers between 20-100
 	    			if ( engWordList.indexOf( str) >= 20 && engWordList.indexOf( str) < 28 ) {
-	    				if ( i + 1 < splittedArr.length && engWordList.indexOf( splittedArr[i+1]) <= 28 &&
-	    					engWordList.indexOf( splittedArr[i+1]) >= 10 ) {
+	    				if ( ( (i + 1 < splittedArr.length && engWordList.indexOf( splittedArr[i+1]) <= 28 &&
+	    					engWordList.indexOf( splittedArr[i+1]) >= 10) ) || (i + 2 < splittedArr.length && engWordList.indexOf( splittedArr[i+2]) == 28) ) {
 	    					return null;
 	    				}
 	    			}
+	    			
+	    			if ( (engWordList.indexOf( str) == 28 && i + 1 < splittedArr.length && engWordList.indexOf( splittedArr[i+1]) == 28) ||
+	    					(engWordList.indexOf( str) == 28 && i + 2 < splittedArr.length && engWordList.indexOf( splittedArr[i+2]) == 28 ))
+	    				return null;
+
+	    			
 	    			// Handling error cases for numbers larger than 100
 	    			if ( engWordList.indexOf( str) > 28 ) {
 	    				for ( int index = i + 1; index < splittedArr.length; index++ ) {
